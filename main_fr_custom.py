@@ -30,7 +30,7 @@ def text_to_audio(text):
 
 
 def generate_response(prompt):
-    response= openai.completion.create(
+    response= openai.Completion.create(
         engine="text-davinci-003",
         prompt="Réponds à ceci avec une nuance d'ironie ; "+prompt,
         max_tokens=2000,
@@ -52,25 +52,20 @@ def main():
                 print(transcription)
                 if transcription.lower()=="carnaval":
                     #record audio
-                    filename ="input.wav"
-                    print("?????")
+                    print("???")
                     source.pause_threshold=1
                     with sr.Microphone() as source:
                         r=sr.Recognizer()
                         r.adjust_for_ambient_noise(source)
                         audiorep=r.listen(source)
-                        with open(filename,"wb")as f:
-                            f.write(audiorep.get_wav_data())
-                    print("écriture de l'audio terminée")   
-                    #transcript audio to test 
-                    text=audio_to_text(filename)
-                    print(text, "texteeee")
+
+                    text=r.recognize_google(audiorep, language="fr-FR")
                     if text:
-                        print(f"вы сказали{text}")
+                        print(f"Vous avez dit {text}")
                         
                         #Generate the response
                         response = generate_response(text)
-                        print(f"chat gpt 3 ответил {response}")
+                        print(f"chat gpt 3 a répondu {response}")
                             
                         #read resopnse using GPT3
                         text_to_audio(response)
