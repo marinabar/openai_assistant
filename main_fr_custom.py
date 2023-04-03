@@ -9,7 +9,7 @@ engine = pyttsx3.init()
 engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_FR-FR_HORTENSE_11.0')
 engine.setProperty('rate', 160)
 
-
+# clé contenu dans le fichier
 with open("apikey.txt", 'r') as f:
     openai.api_key=f.read()
 
