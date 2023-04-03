@@ -18,7 +18,9 @@ def audiowhisper(file):
     Analyse un fichier audio vocal et renvoie le texte trouvé
     """
     audio_file= open(file, "rb")
-    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    transcript = openai.Audio.transcribe("whisper-1", audio_file, 
+        prompt="Bonjour, je ne sais pas pourquoi j'ai, euh, une KeyError en Python",
+        language="fr")
     return transcript["text"]
 
 def text_to_audio(text):
@@ -47,8 +49,8 @@ filename="input.wav"
 
 #liste des messages de notre conversation avec chatPT
 messages = [
-    {"role":"system", 'content':"Tu réponds avec une petite touche de passif aggressif"}
-]
+    {"role":"system", 'content':"Tu réponds avec une petite touche de passif aggressif"},
+    ]
 
 while run:
     # on écoute jusqu'à reconnaître le mot clé
