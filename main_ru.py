@@ -9,7 +9,11 @@ engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices
 
 recognize = sr.Recognizer()
 
+<<<<<<< HEAD
 openai.api_key="APIKEY"
+=======
+openai.api_key="KEY"
+>>>>>>> 8b3a1da10c6a7544d546bb58620c89efdd811516
 
 def audio_to_text(file):
     """with sr.AudioFile(file) as source:
