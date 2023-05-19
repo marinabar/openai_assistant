@@ -20,7 +20,7 @@ def audiowhisper(file):
     """
     audio_file= open(file, "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file, 
-        prompt="Bonjour, je ne sais pas pourquoi j'ai, euh, une KeyError en Python",
+        prompt="Bonjour, euh",
         language="fr")
     return transcript["text"]
 
